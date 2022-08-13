@@ -15,5 +15,7 @@ module.exports = {
   theme: defaultTheme({
     navbar: [...nav],
     sidebar,
+    lastUpdated: false,
+    contributors: false,
   }),
 };

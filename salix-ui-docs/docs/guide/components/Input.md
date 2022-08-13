@@ -1,9 +1,18 @@
 # Input
 
-## 关于Salix UI
+## 基本
 
-Salix UI 是一款基于 Vue 3和TypeScript 的UI 组件库
+<input/>
+<!-- <sx-input v-model="msg" /> -->
+<Input v-model="msg"></Input>
+<Input v-model="msg" placeholder="placeholder"></Input>
+<Input v-model="msg" placeholder="password" type="password"></Input>
+{{ msg }}
 
-这款组件库主要是用于对Vue的进一步学习，包括父子组件如何传参，Vue最新版本Vue3新特性学习
+<script setup>
+import { ref } from "vue";
+import { Input } from "salix-ui";
 
-当然，通过这一个项目，对于TypeScript我也有了一个更好的理解
+let msg = ref(null);
+
+</script>

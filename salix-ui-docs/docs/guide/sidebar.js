@@ -12,7 +12,12 @@ module.exports = [
     collapsable: true,
     children: [
       { text: "Button", link: "/guide/components/Button" },
+      { text: "Switch", link: "/guide/components/Switch" },
+      { text: "Tabs", link: "/guide/components/Tabs" },
       { text: "Input", link: "/guide/components/Input" },
+      { text: "Form", link: "/guide/components/Form" },
+      { text: "Message", link: "/guide/components/Message" },
+      { text: "Dialog", link: "/guide/components/Dialog" },
     ],
   },
 ];
