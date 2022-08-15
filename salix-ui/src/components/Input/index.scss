@@ -24,7 +24,13 @@
     &:focus {
       border-color: $primary-color;
     }
+
+    &.disabled {
+      cursor: not-allowed;
+      background-color: $border-color;
+    }
   }
+
 
   &.error {
     .#{$sx-pre}field {

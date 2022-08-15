@@ -2,9 +2,11 @@
   <div class="sx-field-wrap">
     <input
       class="sx-field"
+      :class="classes"
       :type="type"
       :value="modelValue"
       :placeholder="(placeholder as string)"
+      :disabled="disabled"
       @input="onInput"
       @blur="onBlur"
     />
@@ -18,13 +20,17 @@ import { FormItemContext, FormItemKey } from "../Form/types";
 interface Props {
   modelValue?: string;
   type?: string;
+  disabled?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   modelValue: "",
   type: "text",
+  disabled: false,
 });
 
 const { placeholder } = useAttrs();
+
+const classes = props.disabled ? "disabled" : "";
 
 const formItemCtx = inject<FormItemContext>(FormItemKey);
 
