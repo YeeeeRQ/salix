@@ -34,11 +34,11 @@ const createMsg = (options) => {
   const container = document.createElement("div");
 
   const vnode = h(Message, options);
-  console.log("create options:", options);
+  // console.log("create options:", options);
 
   // 强制挂载onDestroy函数
   vnode.props!.onDestroy = (delID: number) => {
-    console.log("del:", delID);
+    // console.log("del:", delID);
     render(null, container);
 
     let move = 0;
