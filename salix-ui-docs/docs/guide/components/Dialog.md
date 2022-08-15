@@ -1,7 +1,10 @@
 # Dialog 对话框
 
-## 示例1 使用标签
+## 使用\<Dialog\>标签
+
+<br/>
 <Button @click="handleBtnClick">Toggle</Button>
+
 <Dialog
     v-model:visible="visible"
     :closeOnClickOverlay="false"
@@ -27,8 +30,9 @@
     </template>
 </Dialog>
 
-## 示例2 调用showDialog
+## showDialog函数
 
+<br/>
 <Button @click="showDialog">show dialog</Button>
 
 <script setup>
