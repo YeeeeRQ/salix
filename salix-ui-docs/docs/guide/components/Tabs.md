@@ -17,6 +17,26 @@
     <Tab  v-for="i in tabList" :key="i.id" :id="i.id" :title="i.title" :content="i.content"></Tab>
 </Tabs> -->
 
+**示例代码**
+
+```vue
+<template>
+<Tabs v-model:selectedTitle="tabSelected">
+    <Tab title="选项1" id="000">内容1</Tab>
+    <Tab title="选项2" id="001">内容2</Tab>
+    <Tab title="选项3" id="002">内容3</Tab>
+    <Tab title="选项4" id="003">内容4</Tab>
+</Tabs>
+
+</template>
+
+<script setup>
+import {Tabs, Tab} from "salix-ui";
+
+const tabSelected = ref("选项1");
+</script>
+```
+
 
 <script setup>
 import {ref, reactive, watch} from 'vue';
@@ -30,6 +50,7 @@ const tabList= reactive([
 
 
 const tabSelected = ref("选项1");
+
 // const tabSelected = ref(tabList[2].title);
 // watch(tabSelected, ()=>{
 //     console.log('tabSelected: ', tabSelected.value);
@@ -37,7 +58,7 @@ const tabSelected = ref("选项1");
 </script>
 
 <style>
-    .sx-tabs-nav{
+    /* .sx-tabs-nav{
         outline:1px dashed red;
     }
     .sx-tabs-nav-item{
@@ -45,5 +66,5 @@ const tabSelected = ref("选项1");
     }
     .sx-tabs-content{
         outline:1px dashed red;
-    }
+    } */
 </style>
