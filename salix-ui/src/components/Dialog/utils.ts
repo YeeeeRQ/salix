@@ -1,7 +1,7 @@
 import { createApp, h } from "vue";
 import Dialog from "./Dialog.vue";
 
-export const openDialog = (options) => {
+export const openDialog = (options: any) => {
   const { title, content, ok, cancel } = options;
 
   const div = document.createElement("div");
@@ -13,7 +13,7 @@ export const openDialog = (options) => {
         Dialog,
         {
           visible: true,
-          "onUpdate:visible": (newVisible) => {
+          "onUpdate:visible": (newVisible: boolean) => {
             if (!newVisible) {
               app.unmount();
               div.remove();

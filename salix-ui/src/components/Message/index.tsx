@@ -10,7 +10,7 @@ interface InstanceType {
 }
 const instances: InstanceType[] = [];
 
-export const openMessage = (options) => {
+export const openMessage = (options: any) => {
   const gap = 20;
   let offset = options.offset || gap;
   instances.forEach((i) => {
@@ -30,7 +30,7 @@ export const openMessage = (options) => {
   createMsg(opts);
 };
 
-const createMsg = (options) => {
+const createMsg = (options: any) => {
   const container = document.createElement("div");
 
   const vnode = h(Message, options);

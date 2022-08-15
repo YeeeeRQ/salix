@@ -5,8 +5,13 @@
   "main": "./src/components/index.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "build:vue-tsc": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "build:type": "tsc --declaration --project src/components/tsconfig.json",
+    "build:esm": "rollup --format esm -c build/rollup.config.js",
+    "build:umd": "rollup --format umd -c build/rollup.config.js",
+    "build:lib": "npm run build:esm && npm run build:umd",
+    "build": "npm run build:lib && npm run build:types"
   },
   "dependencies": {
     "async-validator": "^4.2.5",
