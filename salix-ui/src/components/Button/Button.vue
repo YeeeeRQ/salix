@@ -1,5 +1,10 @@
 <template>
-  <button class="sx-btn" :class="classes" :disabled="disabled">
+  <button
+    class="sx-btn"
+    :class="classes"
+    :disabled="disabled"
+    :loading="loading"
+  >
     <span v-show="loading" class="sx-loadingIndicator"></span>
     <slot />
   </button>
