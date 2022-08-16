@@ -8,7 +8,7 @@
       <div class="item-control-wrap">
         <slot></slot>
       </div>
-      <p class="item-error" v-show="errMsg">{{ errMsg }}</p>
+      <div class="item-error" v-show="errMsg">{{ errMsg }}</div>
     </div>
   </div>
 </template>
@@ -40,11 +40,9 @@ const getRules = (trigger: ValidTrigger): SxRuleItem[] => {
   const rules = props.rules || parent?.rules[props.prop];
   if (rules) {
     const ruleArr = Array.isArray(rules) ? rules : [rules];
-    const trueRules = ruleArr.filter((item) => {
-      const itemTrigger = item?.trigger || "change";
-      return trigger === itemTrigger;
-    });
-    return trueRules;
+    if (trigger) {
+      return ruleArr.filter((item) => item.trigger === trigger);
+    }
   }
   return [];
 };
