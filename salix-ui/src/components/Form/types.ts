@@ -4,7 +4,7 @@ import { ValidateError } from "async-validator";
 type ValidTrigger = "change" | "blur";
 
 interface SxRuleItem extends RuleItem {
-  trigger?: ValidTrigger;
+  trigger?: ValidTrigger | ValidTrigger[];
 }
 
 interface SxFormRules {
@@ -28,7 +28,7 @@ const FormItemKey = "formItemKey";
 interface FormItemContext {
   id: string;
   prop: string;
-  validate: (value: string) => Promise<boolean | Error>;
+  validate: (value: string, rules: SxRuleItem[]) => Promise<any>;
 
   handleControlChange(value: string): void;
   handleControlBlur(value: string): void;

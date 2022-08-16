@@ -17,7 +17,7 @@ import { provide } from "vue";
 import { FormContext, FormItemContext, FormKey, SxFormRules } from "./types";
 
 interface Props {
-  model: object;
+  model: Object;
   rules?: SxFormRules;
 }
 const props = defineProps<Props>();
@@ -48,7 +48,12 @@ const validate = (
   return Promise.all(
     formItems
       .filter((item) => item.prop)
-      .map((item) => item.validate(props.model[item.prop]))
+      .map((item) => {
+        // console.log("item: ", item);
+        // console.log("validate: ", props.model[item.prop]);
+        return item.validate(props.model[item.prop], props.rules[item.prop]);
+      })
+    // .map((item) => item.validate(props.model[item.prop]))
   )
     .then(() => {
       if (callback) {

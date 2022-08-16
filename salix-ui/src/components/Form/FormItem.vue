@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, provide, ref } from "vue";
+import { inject, onBeforeUnmount, onMounted, provide, ref } from "vue";
 import {
   FormKey,
   FormContext,
@@ -23,7 +23,7 @@ import {
   SxRuleItem,
   ValidTrigger,
 } from "./types";
-import Schema, { ValidateError } from "async-validator";
+import Schema from "async-validator";
 
 interface Props {
   label?: string;
@@ -36,24 +36,27 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const parent = inject<FormContext>(FormKey);
+
 const getRules = (trigger: ValidTrigger): SxRuleItem[] => {
   const rules = props.rules || parent?.rules[props.prop];
   if (rules) {
     const ruleArr = Array.isArray(rules) ? rules : [rules];
     if (trigger) {
-      return ruleArr.filter((item) => item.trigger === trigger);
+      return ruleArr.filter((item) => {
+        if (Array.isArray(item.trigger)) {
+          return item.trigger.includes(trigger);
+        } else {
+          return item.trigger === trigger;
+        }
+      });
     }
   }
   return [];
 };
 
 const errMsg = ref("");
-const validate = (
-  value: string,
-  rules: SxRuleItem[]
-): Promise<boolean | ValidateError[]> => {
+const validate = (value: string, rules: SxRuleItem[]): Promise<any> => {
   if (rules && props.prop) {
-    // const value = value
     const schema = new Schema({ [props.prop]: rules });
     return schema
       .validate({ [props.prop]: value })
@@ -69,9 +72,25 @@ const validate = (
   return Promise.resolve(true);
 };
 
+let id = 0;
+function generateId(): string {
+  return "form-item-" + id++;
+}
+const currentId = generateId();
+
+onMounted(() => {
+  parent?.addItem({
+    id: currentId,
+    prop: props.prop,
+    validate,
+  });
+});
+onBeforeUnmount(() => {
+  parent?.removeItem(currentId);
+});
+
 // FormItem 提供给子组件的函数
 const handleControlChange = (value: string) => {
-  console.log("handleControlChange: ", value);
   const trueRules = getRules("change");
   if (trueRules.length) {
     validate(value, trueRules).catch((errors) => {
@@ -80,8 +99,6 @@ const handleControlChange = (value: string) => {
   }
 };
 const handleControlBlur = (value: string) => {
-  console.log("handleControlBlur: ", value);
-  // validate(value);
   const trueRules = getRules("blur");
   if (trueRules.length) {
     validate(value, trueRules).catch((errors) => {
