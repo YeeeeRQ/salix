@@ -6,8 +6,10 @@ import css from "rollup-plugin-css-only";
 import esbuild from "rollup-plugin-esbuild";
 import vuePlugin from "rollup-plugin-vue";
 import del from "rollup-plugin-delete";
+import replace from "@rollup/plugin-replace";
 
-// pnpm install -D rollup-plugin-terser @rollup/plugin-node-resolve rollup-plugin-scss rollup-plugin-css-only rollup-plugin-esbuild rollup-plugin-vue rollup-plugin-delete
+import pkg from "../package.json";
+const deps = Object.keys(pkg.dependencies);
 
 const baseOutput = (format) => ({
   format,
@@ -40,17 +42,30 @@ export default ({ format }) => {
       css(),
       vuePlugin({
         include: /\.vue$/,
+        target: "browser",
+        css: false,
+        exposeFilename: false,
       }),
       esbuild({
+        minify: false,
+        sourceMap: true,
         include: /\.[jt]sx?$/, // default, inferred from `loaders` option
         exclude: /node_modules/, // default
-        minify: true,
-        target: "esnext",
+        target: "es2016",
         tsconfig: "src/components/tsconfig.json",
         loaders: {
           ".js": "jsx",
         },
       }),
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production"),
+        preventAssignment: true,
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: false,
+      }),
     ],
+    external(id) {
+      return /^vue/.test(id) || deps.some((k) => new RegExp("^" + k).test(id));
+    },
   };
 };

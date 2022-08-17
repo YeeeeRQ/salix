@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
     "@vitejs/plugin-vue": "^3.0.2",
     "@vue/compiler-sfc": "^3.2.37",
     "esbuild": "^0.15.3",
