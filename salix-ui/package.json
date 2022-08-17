@@ -38,9 +38,5 @@
     "vite": "^3.0.6",
     "vue-tsc": "^0.39.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/YeeeeRQ/salix.git"
-  },
   "license": "MIT"
 }
