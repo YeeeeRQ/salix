@@ -7,6 +7,8 @@ import esbuild from "rollup-plugin-esbuild";
 import vuePlugin from "rollup-plugin-vue";
 import del from "rollup-plugin-delete";
 
+// pnpm install -D rollup-plugin-terser @rollup/plugin-node-resolve rollup-plugin-scss rollup-plugin-css-only rollup-plugin-esbuild rollup-plugin-vue rollup-plugin-delete
+
 const baseOutput = (format) => ({
   format,
   file: `dist/${format}/index.js`,
@@ -25,7 +27,7 @@ export default ({ format }) => {
           },
         };
   return {
-    input: join(__dirname, "..", "src/dist/index.ts"),
+    input: join(__dirname, "..", "src/components/index.ts"),
     output,
     plugins: [
       del({ targets: "dist/" + format }),
@@ -34,7 +36,6 @@ export default ({ format }) => {
       scss({
         exclude: ["node_modules"],
         outputStyle: "compressed",
-        prefix: `@import "src/assets/styles/global/variable.scss";`,
       }),
       css(),
       vuePlugin({
