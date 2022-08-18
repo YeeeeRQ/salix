@@ -16,3 +16,4 @@ npm i salix-ui
 
 ## 文档
 
+[link](https://yeeeerq.github.io/salix/)

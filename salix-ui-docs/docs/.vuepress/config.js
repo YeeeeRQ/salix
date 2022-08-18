@@ -8,6 +8,8 @@ module.exports = {
 
   head: [["link", { rel: "icon", href: "/assets/imgs/SalixUI.png" }]],
 
+  base: "/salix/",
+
   markdown: {
     lineNumbers: true,
   },
@@ -17,5 +19,6 @@ module.exports = {
     sidebar,
     lastUpdated: false,
     contributors: false,
+    repo: "https://github.com/YeeeeRQ/salix",
   }),
 };
