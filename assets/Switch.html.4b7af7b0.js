@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-4de70078","path":"/guide/components/Switch.html","title":"Switch \u5207\u6362\u5F00\u5173","lang":"en-US","frontmatter":{},"excerpt":"","headers":[],"git":{},"filePathRelative":"guide/components/Switch.md"}');export{t as data};

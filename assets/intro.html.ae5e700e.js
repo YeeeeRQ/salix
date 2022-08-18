@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-655b4e5c","path":"/guide/intro/intro.html","title":"\u4ECB\u7ECD","lang":"en-US","frontmatter":{},"excerpt":"","headers":[{"level":2,"title":"\u5173\u4E8ESalix UI","slug":"\u5173\u4E8Esalix-ui","children":[]}],"git":{},"filePathRelative":"guide/intro/intro.md"}');export{e as data};
