@@ -18,5 +18,5 @@ features:
 - title: 代码易读
   details: 源码简洁，方便使用
 
-footer: Salix UI
+footer: Created by Salix UI
 ---

@@ -1,7 +1,18 @@
-# Salix UI
+# Salix
 
-项目方案：
+## Salix UI 介绍
 
-使用 `pnpm` 提供的 `monorepo`
+一个Vue3的UI组件库，组件源码采用TypeScript编写, 使用Vue3最新的Composition API。
 
-仓库包含两个主要项目：`Salix-UI 组件库`及其对应的 Docs 站点。
+特点：追求简单轻量, 方便使用。
+
+通过参考Element Plus，Ant Design等主流UI库的样式，交互及部分源码, 以此来实践Vue和rollup等前端构建工具的使用。
+
+## 安装使用
+
+```sh
+npm i salix-ui 
+```
+
+## 文档
+
