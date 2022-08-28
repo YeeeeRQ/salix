@@ -4,22 +4,30 @@
 
 打开终端运行下列命令:
 
-```bash
+<CodeGroup>
+  <CodeGroupItem title="NPM" active>
+
+```bash:no-line-numbers
 npm install salix-ui
 ```
 
-或
+  </CodeGroupItem>
 
-```bash
+  <CodeGroupItem title="YARN">
+
+```bash:no-line-numbers
 yarn add salix-ui
 ```
+  </CodeGroupItem>
+</CodeGroup>
 
 ## 开始使用
 
-请先安装本组件库
+安装 `salix-ui` 后
 
-然后在您的代码中写入下面的代码
+根据需要在项目代码中输入所需组件即可
 
-```javascript
-import {Button, Switch, Dialog, Tabs, Tab} from "salix-ui";
+**示例**
+```javascript:no-line-numbers
+import {Button, Switch, Tabs, Tab} from "salix-ui";
 ```

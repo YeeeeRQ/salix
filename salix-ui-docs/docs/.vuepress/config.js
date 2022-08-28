@@ -19,6 +19,7 @@ module.exports = {
     sidebar,
     lastUpdated: false,
     contributors: false,
+    editLink: false,
     repo: "https://github.com/YeeeeRQ/salix",
   }),
 };

@@ -7,7 +7,7 @@ tagline: "简洁 轻量  快速引用无负担"
 
 actions:
 - text: 开始
-  link: /guide/
+  link: /guide/intro/intro
   type: primary
 
 features:
